@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpiAccess - Life-Saving Epinephrine for NY Businesses</title>
+    <meta name="description" content="Helping NY restaurants and businesses obtain and properly use epinephrine auto-injectors to prevent allergy emergencies.">
+    
+    <!-- Fonts from Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Colors */
+        :root {
+            --primary: #1A237E;
+            --primary-light: #4A56B2;
+            --accent: #FF7043;
+            --accent-light: #FF9E80;
+            --neutral-light: #FAFAFA;
+            --neutral-dark: #212121;
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--neutral-light);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Stats Marquee */
+        .stats {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* Responsive Grid */
+        @media (min-width: 768px) {
+            .grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .grid-3 {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Accessibility Focus Styles */
+        a:focus, button:focus {
+            outline: 3px solid var(--accent-light);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">EpiAccess</div>
+            <nav>
+                <a href="#mission">Mission</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#training">Training</a>
+                <a href="#enroll" class="btn btn-secondary">Enroll Now</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Every Minute Matters</h1>
+            <p>Helping New York businesses be prepared for allergy emergencies</p>
+            <div style="margin-top: 30px;">
+                <a href="#enroll" class="btn btn-primary">Get Certified Today</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Marquee -->
+    <section class="stats">
+        <div class="container grid-3">
+            <div class="stat-item">
+                <div class="stat-number">8%</div>
+                <div>of NY adults have food allergies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$2,400</div>
+                <div>average ER bill for reactions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div>of fatal reactions lacked EpiPens</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section id="mission" class="mission">
+        <div class="container grid-2">
+            <div>
+                <h2>Our Mission</h2>
+                <p>EpiAccess was founded in 2019 to address the critical gap in emergency epinephrine access across New York's public spaces. After successfully lobbying for the FASTER Act and Elijah's Law, we now help businesses implement these life-saving measures.</p>
+                <p>We believe no one should die from an allergic reaction when the solution exists. Our team works directly with restaurants, schools, and public venues to make epinephrine accessible and staff properly trained.</p>
+                <a href="#training" class="btn btn-primary">Learn About Training</a>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team meeting at EpiAccess office" style="width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section id="benefits" style="background-color: var(--neutral-light); padding: 60px 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Why Your Business Needs EpiPens</h2>
+            <div class="grid-2">
+                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3>Legal Protection</h3>
+                    <p>New York's Good Samaritan laws protect businesses that stock and properly use epinephrine. Our program ensures you meet all requirements for liability protection.</p>
+                    <ul>
+                        <li>Civil liability protection</li>
+                        <li>No duty to administer clause</li>
+                        <li>Compliance with NY Public Health Law § 3000-c</li>
+                    </ul>
+                </div>
+                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3>Financial Benefits</h3>
+                    <p>Being prepared isn't just ethical—it's good business. Protect your patrons and your bottom line.</p>
+                    <ul>
+                        <li>Potential insurance premium reductions</li>
+                        <li>Avoid costly emergency responses</li>
+                        <li>Attract allergy-conscious customers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Training Section -->
+    <section id="training" style="padding: 60px 0; background-color: white;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Simple, Effective Training</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>6-Minute Certification</h3>
+                    <p>Our streamlined training teaches staff to recognize anaphylaxis and properly use an EpiPen. Certification is valid for 2 years.</p>
+                    <p>Training includes:</p>
+                    <ul>
+                        <li>Allergy reaction recognition</li>
+                        <li>Step-by-step administration</li>
+                        <li>Emergency protocol</li>
+                        <li>Incident documentation</li>
+                    </ul>
+                    <a href="#enroll" class="btn btn-primary">Start Training Now</a>
+                </div>
+                <div style="background-color: var(--neutral-light); padding: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--accent);">▶</div>
+                        <p>Sample training video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Enrollment CTA -->
+    <section id="enroll" style="background-color: var(--primary); color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Ready to Protect Your Community?</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px;">Join hundreds of New York businesses that are prepared for allergy emergencies.</p>
+            
+            <form style="max-width: 500px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; text-align: left; color: var(--neutral-dark);">
+                <div style="margin-bottom: 20px;">
+                    <label for="name" style="display: block; margin-bottom: 5px;">Your Name</label>
+                    <input type="text" id="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
+                    <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="business" style="display: block; margin-bottom: 5px;">Business Name</label>
+                    <input type="text" id="business" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px;">EpiAccess</div>
+            <p>Making epinephrine accessible across New York</p>
+            <p style="margin-top: 30px;">© 2023 EpiAccess. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
