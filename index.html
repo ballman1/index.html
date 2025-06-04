@@ -268,12 +268,23 @@
                     </ul>
                     <a href="#enroll" class="btn btn-primary">Start Training Now</a>
                 </div>
-                <div style="background-color: var(--neutral-light); padding: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; color: var(--accent);">▶</div>
-                        <p>https://www.youtube.com/watch?v=vki42stNqMM</p>
-                    </div>
-                </div>
+                <!-- Responsive YouTube embed -->
+<div style="
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;       /* 16:9 ratio */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+">
+    <iframe
+        src="https://www.youtube.com/embed/vki42stNqMM?rel=0&modestbranding=1&playsinline=1"
+        title="EpiAccess Training Preview"
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+    ></iframe>
+</div>
             </div>
         </div>
     </section>
