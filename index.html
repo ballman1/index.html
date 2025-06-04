@@ -64,11 +64,11 @@
             align-items: center;
         }
         
+        /* Updated logo styles to accommodate image */
         .logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
+            display: inline-block;
+            height: 48px; /* Controls logo size */
+            width: auto;
         }
         
         /* Buttons */
@@ -170,7 +170,7 @@
     <!-- Header with Navigation -->
     <header>
         <div class="container nav-container">
-            <div class="logo">EpiAccess</div>
+            <img src="assets/img/epiaccess-logo.png" alt="EpiAccess logo" class="logo" />
             <nav>
                 <a href="#mission">Mission</a>
                 <a href="#benefits">Benefits</a>
@@ -269,22 +269,9 @@
                     <a href="#enroll" class="btn btn-primary">Start Training Now</a>
                 </div>
                 <!-- Responsive YouTube embed -->
-<div style="
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;       /* 16:9 ratio */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-">
-    <iframe
-        src="https://www.youtube.com/embed/vki42stNqMM?rel=0&modestbranding=1&playsinline=1"
-        title="EpiAccess Training Preview"
-        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-    ></iframe>
-</div>
+                <div style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <iframe src="https://www.youtube.com/embed/vki42stNqMM?rel=0&modestbranding=1&playsinline=1" title="EpiAccess Training Preview" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -300,17 +287,14 @@
                     <label for="name" style="display: block; margin-bottom: 5px;">Your Name</label>
                     <input type="text" id="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
-                
                 <div style="margin-bottom: 20px;">
                     <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
                     <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
-                
                 <div style="margin-bottom: 20px;">
                     <label for="business" style="display: block; margin-bottom: 5px;">Business Name</label>
                     <input type="text" id="business" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
-                
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
             </form>
         </div>
@@ -319,7 +303,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px;">EpiAccess</div>
+            <img src="assets/img/epiaccess-logo.png" alt="EpiAccess logo" class="logo" style="margin-bottom: 20px;" />
             <p>Making epinephrine accessible across New York</p>
             <p style="margin-top: 30px;">© 2025 EpiAccess. All rights reserved.</p>
         </div>
