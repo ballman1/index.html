@@ -56,6 +56,9 @@
             background-color: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .nav-container {
@@ -64,11 +67,11 @@
             align-items: center;
         }
         
-        /* Updated logo styles to accommodate image */
         .logo {
-            display: inline-block;
-            height: 48px; /* Controls logo size */
-            width: auto;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
         }
         
         /* Buttons */
@@ -136,6 +139,85 @@
             background-color: white;
         }
         
+        /* News Section */
+        .news-section {
+            padding: 60px 0;
+            background-color: var(--neutral-light);
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .news-source {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .news-source h3 {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .news-item h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .news-item h4 a {
+            color: var(--primary);
+            transition: color 0.2s ease;
+        }
+        
+        .news-item h4 a:hover {
+            color: var(--accent);
+        }
+        
+        .news-item .date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .news-item .description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            color: #d32f2f;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--primary);
@@ -159,6 +241,16 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+        
         /* Accessibility Focus Styles */
         a:focus, button:focus {
             outline: 3px solid var(--accent-light);
@@ -170,11 +262,12 @@
     <!-- Header with Navigation -->
     <header>
         <div class="container nav-container">
-            <img src="/epiaccess-logo.png" alt="EpiAccess logo" class="logo" />
+            <div class="logo">EpiAccess</div>
             <nav>
                 <a href="#mission">Mission</a>
                 <a href="#benefits">Benefits</a>
                 <a href="#training">Training</a>
+                <a href="#news">News</a>
                 <a href="#enroll" class="btn btn-secondary">Enroll Now</a>
             </nav>
         </div>
@@ -214,8 +307,8 @@
         <div class="container grid-2">
             <div>
                 <h2>Our Mission</h2>
-                <p>EpiAccess was founded in 2025 to address the critical gap in emergency epinephrine access across New York's public spaces. After successfully lobbying for the FASTER Act and Elijah's Law, we now help businesses implement these life-saving measures.</p>
-                <p>We believe no one should die from an allergic reaction when the solution exists. Our team works directly with restaurants, schools, and public venues to make epinephrine accessible.</p>
+                <p>EpiAccess was founded in 2019 to address the critical gap in emergency epinephrine access across New York's public spaces. After successfully lobbying for the FASTER Act and Elijah's Law, we now help businesses implement these life-saving measures.</p>
+                <p>We believe no one should die from an allergic reaction when the solution exists. Our team works directly with restaurants, schools, and public venues to make epinephrine accessible and staff properly trained.</p>
                 <a href="#training" class="btn btn-primary">Learn About Training</a>
             </div>
             <div>
@@ -257,8 +350,8 @@
             <h2 style="text-align: center; margin-bottom: 40px;">Simple, Effective Training</h2>
             <div class="grid-2">
                 <div>
-                    <h3>30-Minute Certification</h3>
-                    <p>We have partnered with the American Red Cross to offer a 30-minute online certification that teaches staff to recognize anaphylaxis and properly use an EpiPen. Certification is valid for 2 years.</p>
+                    <h3>6-Minute Certification</h3>
+                    <p>Our streamlined training teaches staff to recognize anaphylaxis and properly use an EpiPen. Certification is valid for 2 years.</p>
                     <p>Training includes:</p>
                     <ul>
                         <li>Allergy reaction recognition</li>
@@ -268,9 +361,37 @@
                     </ul>
                     <a href="#enroll" class="btn btn-primary">Start Training Now</a>
                 </div>
-                <!-- Responsive YouTube embed -->
-                <div style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                    <iframe src="https://www.youtube.com/embed/vki42stNqMM?rel=0&modestbranding=1&playsinline=1" title="EpiAccess Training Preview" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div style="background-color: var(--neutral-light); padding: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--accent);">▶</div>
+                        <p>Sample training video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- News Section -->
+    <section id="news" class="news-section">
+        <div class="container">
+            <h2 style="text-align: center;">Latest Allergy News & Resources</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto;">Stay informed with the latest allergy research and news from trusted sources</p>
+            
+            <div class="news-container">
+                <!-- AAFA News -->
+                <div class="news-source">
+                    <h3>AAFA News</h3>
+                    <div id="aafa-news" class="news-feed">
+                        <div class="loading">Loading news...</div>
+                    </div>
+                </div>
+                
+                <!-- NIH MedlinePlus News -->
+                <div class="news-source">
+                    <h3>NIH MedlinePlus</h3>
+                    <div id="nih-news" class="news-feed">
+                        <div class="loading">Loading news...</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -287,14 +408,17 @@
                     <label for="name" style="display: block; margin-bottom: 5px;">Your Name</label>
                     <input type="text" id="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
+                
                 <div style="margin-bottom: 20px;">
                     <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
                     <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
+                
                 <div style="margin-bottom: 20px;">
                     <label for="business" style="display: block; margin-bottom: 5px;">Business Name</label>
                     <input type="text" id="business" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
+                
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
             </form>
         </div>
@@ -303,10 +427,183 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <img src="/epiaccess-logo.png" alt="EpiAccess logo" class="logo" style="margin-bottom: 20px;" />
+            <div class="logo" style="margin-bottom: 20px;">EpiAccess</div>
             <p>Making epinephrine accessible across New York</p>
-            <p style="margin-top: 30px;">© 2025 EpiAccess. All rights reserved.</p>
+            <p style="margin-top: 30px;">© 2023 EpiAccess. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // RSS Feed Configuration
+        const RSS_FEEDS = {
+            aafa: {
+                url: 'https://aafa.org/rss/allergy-and-asthma-news/',
+                containerId: 'aafa-news',
+                sourceUrl: 'https://aafa.org/asthma-allergy-news/',
+                name: 'AAFA'
+            },
+            nih: {
+                url: 'https://medlineplus.gov/feeds/topics/allergy.xml',
+                containerId: 'nih-news',
+                sourceUrl: 'https://medlineplus.gov/allergy.html',
+                name: 'NIH MedlinePlus'
+            }
+        };
+
+        // Function to fetch and display RSS feed using multiple services as fallback
+        async function fetchRSSFeed(feedKey) {
+            const feedConfig = RSS_FEEDS[feedKey];
+            const container = document.getElementById(feedConfig.containerId);
+            
+            // Try multiple RSS to JSON services
+            const services = [
+                {
+                    name: 'feed2json',
+                    url: `https://www.toptal.com/developers/feed2json/convert?url=${encodeURIComponent(feedConfig.url)}`
+                },
+                {
+                    name: 'rss2json',
+                    url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedConfig.url)}`
+                }
+            ];
+            
+            let success = false;
+            
+            for (const service of services) {
+                try {
+                    console.log(`Trying ${service.name} for ${feedConfig.name}...`);
+                    
+                    const response = await fetch(service.url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Handle different response formats
+                    let items = [];
+                    if (service.name === 'feed2json') {
+                        items = data.items || [];
+                    } else if (service.name === 'rss2json' && data.status === 'ok') {
+                        items = data.items || [];
+                    }
+                    
+                    if (items.length > 0) {
+                        // Clear loading message
+                        container.innerHTML = '';
+                        
+                        // Display up to 5 items
+                        const itemsToShow = Math.min(5, items.length);
+                        for (let i = 0; i < itemsToShow; i++) {
+                            const item = items[i];
+                            const newsItem = document.createElement('div');
+                            newsItem.className = 'news-item';
+                            
+                            // Format date (handle different date fields)
+                            let formattedDate = '';
+                            const dateStr = item.date_published || item.pubDate || item.date;
+                            if (dateStr) {
+                                const date = new Date(dateStr);
+                                if (!isNaN(date.getTime())) {
+                                    formattedDate = date.toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric'
+                                    });
+                                }
+                            }
+                            
+                            // Get description (handle different field names)
+                            let description = item.content_html || item.description || item.summary || '';
+                            // Remove HTML tags
+                            description = description.replace(/<[^>]*>/g, '');
+                            // Decode HTML entities
+                            const textarea = document.createElement('textarea');
+                            textarea.innerHTML = description;
+                            description = textarea.value;
+                            // Truncate
+                            if (description.length > 150) {
+                                description = description.substring(0, 150).trim() + '...';
+                            }
+                            
+                            // Get link (handle different field names)
+                            const link = item.url || item.link || '#';
+                            
+                            newsItem.innerHTML = `
+                                <h4><a href="${link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h4>
+                                ${formattedDate ? `<div class="date">${formattedDate}</div>` : ''}
+                                ${description ? `<div class="description">${description}</div>` : ''}
+                            `;
+                            
+                            container.appendChild(newsItem);
+                        }
+                        
+                        // Add a subtle link to view more
+                        const moreLink = document.createElement('div');
+                        moreLink.style.cssText = 'text-align: center; margin-top: 20px;';
+                        moreLink.innerHTML = `<a href="${feedConfig.sourceUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.9rem;">View more at ${feedConfig.name} →</a>`;
+                        container.appendChild(moreLink);
+                        
+                        success = true;
+                        break; // Exit loop on success
+                    }
+                } catch (error) {
+                    console.error(`${service.name} failed for ${feedConfig.name}:`, error);
+                    continue; // Try next service
+                }
+            }
+            
+            // If all services failed, show fallback
+            if (!success) {
+                container.innerHTML = `
+                    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                        <h4 style="margin: 0 0 15px 0; color: var(--primary);">
+                            Latest ${feedConfig.name} News
+                        </h4>
+                        <p style="margin: 0 0 15px 0; color: #666;">
+                            Stay informed with the latest allergy research and guidelines.
+                        </p>
+                        <a href="${feedConfig.sourceUrl}" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn btn-primary"
+                           style="display: inline-block;">
+                            Visit ${feedConfig.name} →
+                        </a>
+                    </div>
+                    
+                    <!-- Sample content to show structure -->
+                    <div style="margin-top: 20px; opacity: 0.7;">
+                        <div class="news-item">
+                            <h4>Food Allergy Management Updates</h4>
+                            <div class="date">Recent</div>
+                            <div class="description">Visit ${feedConfig.name} for the latest guidelines on managing food allergies in commercial settings...</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Load RSS feeds when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load both RSS feeds
+            fetchRSSFeed('aafa');
+            fetchRSSFeed('nih');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
