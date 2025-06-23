@@ -3,603 +3,1258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EpiAccess - Life-Saving Epinephrine for NY Businesses</title>
-    <meta name="description" content="Helping NY restaurants and businesses obtain and properly use epinephrine auto-injectors to prevent allergy emergencies.">
-    
-    <!-- Fonts from Google -->
+    <title>EpiAccess NY - Equitable Epinephrine Access for All New Yorkers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Variables for Colors */
         :root {
             --primary: #1A237E;
-            --primary-light: #4A56B2;
             --accent: #FF7043;
-            --accent-light: #FF9E80;
             --neutral-light: #FAFAFA;
             --neutral-dark: #212121;
+            --community: #4CAF50;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
         }
-        
-        /* Base Styles */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--neutral-dark);
-            margin: 0;
-            padding: 0;
             background-color: var(--neutral-light);
+            overflow-x: hidden;
         }
-        
-        h1, h2, h3 {
+
+        h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             line-height: 1.2;
             color: var(--primary);
         }
-        
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        
-        /* Layout */
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 0 15px;
         }
-        
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-community {
+            background-color: var(--community);
+            color: white;
+        }
+
+        .btn-community:hover {
+            background-color: #388E3C;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
         }
-        
+
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
+            display: flex;
+            align-items: center;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--neutral-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
             font-size: 1.5rem;
             color: var(--primary);
+            cursor: pointer;
         }
-        
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        /* Hero Section */
+
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(26, 35, 126, 0.85)), 
+                        url('https://images.unsplash.com/photo-1609840114030-9ae5c1b1b7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 0;
+            padding: 180px 0 100px;
             text-align: center;
+            position: relative;
         }
-        
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .hero h1 {
-            color: white;
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
+            color: white;
         }
-        
-        /* Stats Marquee */
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .counter {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        .counter-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .counter-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         .stats {
             background-color: var(--primary);
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
         }
-        
-        .stat-item {
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
             text-align: center;
-            padding: 10px;
+            padding: 25px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
-        
+
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-family: 'Poppins', sans-serif;
         }
-        
-        /* Mission Section */
-        .mission {
-            padding: 60px 0;
-            background-color: white;
-        }
-        
-        /* News Section */
-        .news-section {
-            padding: 60px 0;
-            background-color: var(--neutral-light);
-        }
-        
-        .news-container {
+
+        .mission-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .mission-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 450px;
+            background: url('https://images.unsplash.com/photo-1581578021064-0bd032ce55ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+
+        .mission-text h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .timeline {
             margin-top: 40px;
         }
-        
-        .news-source {
-            background-color: white;
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: var(--accent);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .benefits {
+            background-color: var(--neutral-light);
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .benefit-title {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .quote {
+            background: var(--primary);
+            color: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin: 40px 0;
+            position: relative;
         }
-        
-        .news-source h3 {
+
+        .quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: serif;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
             margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-light);
+            position: relative;
+            z-index: 1;
         }
-        
-        .news-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+
+        .quote-author {
+            font-weight: 500;
+            text-align: right;
         }
-        
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+
+        .legal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-        
-        .news-item h4 {
-            margin: 0 0 8px 0;
-            font-size: 1.1rem;
-            line-height: 1.4;
+
+        .legal-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
         }
-        
-        .news-item h4 a {
-            color: var(--primary);
-            transition: color 0.2s ease;
-        }
-        
-        .news-item h4 a:hover {
+
+        .legal-icon {
+            font-size: 2rem;
             color: var(--accent);
+            margin-bottom: 20px;
         }
-        
-        .news-item .date {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 8px;
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
         }
-        
-        .news-item .description {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
+
+        .training {
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
         }
-        
-        .loading {
+
+        .training-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .video-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: var(--accent);
+            z-index: 0;
+        }
+
+        .step {
             text-align: center;
-            padding: 20px;
-            color: #666;
+            position: relative;
+            z-index: 1;
+            width: 30%;
         }
-        
-        .error {
-            color: #d32f2f;
-            padding: 15px;
-            background-color: #ffebee;
-            border-radius: 4px;
-            margin: 10px 0;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary);
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent);
             color: white;
-            padding: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            background: #f9f9f9;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .contact {
+            background: linear-gradient(to bottom, var(--primary), #0d153f);
+            color: white;
             text-align: center;
         }
-        
-        /* Responsive Grid */
-        @media (min-width: 768px) {
-            .grid-2 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-            
-            .grid-3 {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 20px;
-            }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
         }
-        
-        @media (max-width: 768px) {
-            .news-container {
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .equity-section {
+            background: linear-gradient(to right, var(--primary), var(--community));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .equity-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .law-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+
+        .community-partners {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        footer {
+            background: #0d153f;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .mission-content,
+            .training-container,
+            .benefits-container {
                 grid-template-columns: 1fr;
             }
             
-            nav {
+            .steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .steps::before {
                 display: none;
             }
+            
+            .step {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
         }
-        
-        /* Accessibility Focus Styles */
-        a:focus, button:focus {
-            outline: 3px solid var(--accent-light);
-            outline-offset: 3px;
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
+    <!-- Header -->
     <header>
         <div class="container nav-container">
-            <div class="logo">EpiAccess</div>
-            <nav>
-                <a href="#mission">Mission</a>
-                <a href="#benefits">Benefits</a>
-                <a href="#training">Training</a>
-                <a href="#news">News</a>
-                <a href="#enroll" class="btn btn-secondary">Enroll Now</a>
-            </nav>
+            <a href="#" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                EpiAccess NY
+            </a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mission">Our Mission</a></li>
+                <li><a href="#laws">NY Laws</a></li>
+                <li><a href="#benefits">Why EpiPens</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#distribution">How It Works</a></li>
+                <li><a href="#equity">Community Equity</a></li>
+                <li><a href="#enroll" class="btn btn-community">Enroll</a></li>
+            </ul>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
-            <h1>Every Minute Matters</h1>
-            <p>Helping New York businesses be prepared for allergy emergencies</p>
-            <div style="margin-top: 30px;">
-                <a href="#enroll" class="btn btn-primary">Get Certified Today</a>
+            <div class="hero-content">
+                <h1>Safety Shouldn't Be a Privilege</h1>
+                <p>New York State law ensures life-saving epinephrine access for all - regardless of income or background</p>
+                
+                <div class="counter">
+                    <div class="counter-number">1,429</div>
+                    <div class="counter-label">Anaphylaxis Incidents in NY This Year</div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#laws" class="btn btn-primary">NY Legal Requirements</a>
+                    <a href="#equity" class="btn btn-community">Community Equity Program</a>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Stats Marquee -->
+
+    <!-- Stats Section -->
     <section class="stats">
-        <div class="container grid-3">
-            <div class="stat-item">
+        <div class="container stats-container">
+            <div class="stat-card">
                 <div class="stat-number">8%</div>
                 <div>of NY adults have food allergies</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">$2,400</div>
                 <div>average ER bill for reactions</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">85%</div>
                 <div>of fatal reactions lacked EpiPens</div>
             </div>
         </div>
     </section>
-    
+
     <!-- Mission Section -->
-    <section id="mission" class="mission">
-        <div class="container grid-2">
-            <div>
-                <h2>Our Mission</h2>
-                <p>EpiAccess was founded in 2019 to address the critical gap in emergency epinephrine access across New York's public spaces. After successfully lobbying for the FASTER Act and Elijah's Law, we now help businesses implement these life-saving measures.</p>
-                <p>We believe no one should die from an allergic reaction when the solution exists. Our team works directly with restaurants, schools, and public venues to make epinephrine accessible and staff properly trained.</p>
-                <a href="#training" class="btn btn-primary">Learn About Training</a>
-            </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team meeting at EpiAccess office" style="width: 100%; border-radius: 8px;">
+    <section class="section" id="mission">
+        <div class="container">
+            <h2 class="section-title">Our Mission: Equity in Emergency Care</h2>
+            <div class="mission-content">
+                <div class="mission-image"></div>
+                <div class="mission-text">
+                    <h2>Protecting Every New Yorker</h2>
+                    <p>Founded in the Bronx, EpiAccess was born from witnessing how economic disparities create life-threatening gaps in emergency care. Our mission: ensure every New Yorker—regardless of zip code or income—has access to life-saving epinephrine in public spaces.</p>
+                    <p>Through landmark legislation like Elijah's Law and the FASTER Act, we've established the legal framework for equitable access. Now we partner with businesses across NY to turn these laws into life-saving reality.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2019</div>
+                            <div>Founded in the Bronx to address allergy care disparities</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021</div>
+                            <div>Successfully lobbied for Elijah's Law in NY</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div>Expanded Good Samaritan protections to cover all NY businesses</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <div>Launched Community Equity Program for underserved neighborhoods</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#equity" class="btn btn-community">Learn About Equity Program</a>
+                </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- NY Laws Section -->
+    <section class="section" id="laws">
+        <div class="container">
+            <h2 class="section-title">New York State Laws Protecting You</h2>
+            <div class="legal-cards">
+                <div class="legal-card">
+                    <div class="legal-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Elijah's Law (2021)</h3>
+                    <p>Requires NY childcare programs to implement allergy action plans and stock epinephrine auto-injectors.</p>
+                    <a href="#" class="btn btn-primary">Read Full Legislation</a>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Good Samaritan Expansion (2024)</h3>
+                    <p>Protects businesses and trained individuals from liability when administering epinephrine in good faith.</p>
+                    <a href="#" class="btn btn-primary">Legal Protections</a>
+                </div>
+                
+                <div class="legal-card">
+                    <div class="legal-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Public Access Law § 3000-c</h3>
+                    <p>Authorizes businesses to maintain epinephrine auto-injectors and permits trained employees to use them.</p>
+                    <a href="#" class="btn btn-primary">Business Requirements</a>
+                </div>
+            </div>
+            
+            <div class="quote">
+                <p class="quote-text">"No person shall be held liable for damages when they, in good faith, administer epinephrine to another person reasonably believed to be having an anaphylactic reaction."</p>
+                <p class="quote-author">NY Public Health Law § 3000-b</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
-    <section id="benefits" style="background-color: var(--neutral-light); padding: 60px 0;">
+    <section class="section benefits" id="benefits">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">Why Your Business Needs EpiPens</h2>
-            <div class="grid-2">
-                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                    <h3>Legal Protection</h3>
-                    <p>New York's Good Samaritan laws protect businesses that stock and properly use epinephrine. Our program ensures you meet all requirements for liability protection.</p>
+            <h2 class="section-title">Why Your Business Should Stock EpiPens</h2>
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="benefit-title">Community Responsibility</h3>
+                    <p>Be part of a statewide network ensuring all New Yorkers—especially vulnerable populations—can feel safe in public spaces.</p>
                     <ul>
-                        <li>Civil liability protection</li>
-                        <li>No duty to administer clause</li>
-                        <li>Compliance with NY Public Health Law § 3000-c</li>
+                        <li>Protect children from low-income families</li>
+                        <li>Support customers with limited healthcare access</li>
+                        <li>Demonstrate commitment to community wellbeing</li>
                     </ul>
                 </div>
-                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                    <h3>Financial Benefits</h3>
-                    <p>Being prepared isn't just ethical—it's good business. Protect your patrons and your bottom line.</p>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="benefit-title">Legal & Financial Benefits</h3>
+                    <p>NY State laws provide significant protections and advantages for participating businesses.</p>
                     <ul>
+                        <li>Full liability protection under Good Samaritan laws</li>
                         <li>Potential insurance premium reductions</li>
-                        <li>Avoid costly emergency responses</li>
-                        <li>Attract allergy-conscious customers</li>
+                        <li>Tax benefits for medical equipment</li>
+                        <li>Enhanced community reputation</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Community Equity Section -->
+    <section class="equity-section" id="equity">
+        <div class="container">
+            <div class="equity-content">
+                <h2>Community Equity Program</h2>
+                <div class="law-badge">Funded by NY Department of Health</div>
+                <p>We believe life-saving medication should never be out of reach due to economic circumstances. Our equity program ensures:</p>
+                
+                <div class="benefits-container" style="margin-top: 40px;">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3 class="benefit-title">Sliding Scale Fees</h3>
+                        <p>Subsidized enrollment for businesses in underserved communities. Pay what you can afford.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3 class="benefit-title">Free EpiPens</h3>
+                        <p>Donated auto-injectors for community centers, food pantries, and public housing facilities.</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 50px 0 20px;">Our Community Partners</h3>
+                <div class="community-partners">
+                    <div class="partner-logo">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                </div>
+                
+                <a href="#enroll" class="btn btn-community">Apply for Equity Program</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Training Section -->
-    <section id="training" style="padding: 60px 0; background-color: white;">
+    <section class="section training" id="training">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">Simple, Effective Training</h2>
-            <div class="grid-2">
+            <h2 class="section-title">Accessible Training for All</h2>
+            <div class="training-container">
                 <div>
-                    <h3>6-Minute Certification</h3>
-                    <p>Our streamlined training teaches staff to recognize anaphylaxis and properly use an EpiPen. Certification is valid for 2 years.</p>
-                    <p>Training includes:</p>
+                    <h3>Free NYS-Compliant Certification</h3>
+                    <p>Our training meets all New York State requirements and is available in 8 languages. No internet? We provide in-person training for community centers.</p>
                     <ul>
-                        <li>Allergy reaction recognition</li>
-                        <li>Step-by-step administration</li>
-                        <li>Emergency protocol</li>
-                        <li>Incident documentation</li>
+                        <li>Recognize signs of anaphylaxis</li>
+                        <li>Proper EpiPen administration</li>
+                        <li>NY-specific legal protocols</li>
+                        <li>Documentation and reporting</li>
                     </ul>
-                    <a href="#enroll" class="btn btn-primary">Start Training Now</a>
+                    <p style="margin: 20px 0;">Certification is valid for two years and meets all New York State requirements.</p>
+                    <a href="#" class="btn btn-primary">Start Free Training</a>
                 </div>
-                <div style="background-color: var(--neutral-light); padding: 20px; border-radius: 8px; display: flex; justify-content: center; align-items: center;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; color: var(--accent);">▶</div>
-                        <p>Sample training video</p>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/7hZOUzJkJVE" title="EpiPen Training" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distribution Section -->
+    <section class="section" id="distribution">
+        <div class="container">
+            <h2 class="section-title">How EpiAccess Works in NY</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Enroll</h3>
+                        <p>Complete our simple enrollment - special programs for underserved communities</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Train</h3>
+                        <p>Complete free NYS-compliant training in-person or online</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Protect</h3>
+                        <p>Receive epinephrine auto-injectors with free replacements</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#enroll" class="btn btn-primary">Enroll Your Business</a>
+                <a href="#equity" class="btn btn-community" style="margin-left: 15px;">Equity Program Info</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does this help low-income communities?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our Community Equity Program provides free epinephrine auto-injectors to public spaces in underserved neighborhoods and offers sliding scale fees for small businesses. We prioritize areas with limited healthcare access.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What does NY law require of businesses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While not mandatory, NY law (Public Health Law § 3000-c) explicitly permits businesses to stock and administer epinephrine. The law provides liability protection through Good Samaritan provisions when businesses follow proper protocols.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can community centers participate?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Community centers, libraries, and public housing facilities qualify for our free program including equipment, training, and support. Contact us to enroll your community space.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- News Section -->
-    <section id="news" class="news-section">
+
+    <!-- Contact Section -->
+    <section class="section contact" id="enroll">
         <div class="container">
-            <h2 style="text-align: center;">Latest Allergy News & Resources</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto;">Stay informed with the latest allergy research and news from trusted sources</p>
-            
-            <div class="news-container">
-                <!-- AAFA News -->
-                <div class="news-source">
-                    <h3>AAFA News</h3>
-                    <div id="aafa-news" class="news-feed">
-                        <div class="loading">Loading news...</div>
+            <h2 class="section-title" style="color: white;">Enroll Your NY Business</h2>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 30px; color: white;">Join Our Safety Network</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name" style="color: white;">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Smith">
                     </div>
-                </div>
-                
-                <!-- NIH MedlinePlus News -->
-                <div class="news-source">
-                    <h3>NIH MedlinePlus</h3>
-                    <div id="nih-news" class="news-feed">
-                        <div class="loading">Loading news...</div>
+                    
+                    <div class="form-group">
+                        <label for="email" style="color: white;">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@restaurant.com">
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="business" style="color: white;">Business Name</label>
+                        <input type="text" id="business" class="form-control" placeholder="Smith's Restaurant">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zip" style="color: white;">ZIP Code</label>
+                        <input type="text" id="zip" class="form-control" placeholder="10453">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="color: white;">Community Type</label>
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Urban</button>
+                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Suburban</button>
+                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Rural</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="color: white;">Interested in:</label>
+                        <div style="display: flex; gap: 10px; margin-top: 8px;">
+                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Standard Program</button>
+                            <button type="button" class="btn" style="flex: 1; background: var(--community); color: white;">Equity Program</button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-community" style="width: 100%; padding: 16px; font-size: 1.1rem;">Submit Enrollment</button>
+                </form>
             </div>
         </div>
     </section>
-    
-    <!-- Enrollment CTA -->
-    <section id="enroll" style="background-color: var(--primary); color: white; padding: 60px 0; text-align: center;">
-        <div class="container">
-            <h2 style="color: white;">Ready to Protect Your Community?</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px;">Join hundreds of New York businesses that are prepared for allergy emergencies.</p>
-            
-            <form style="max-width: 500px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; text-align: left; color: var(--neutral-dark);">
-                <div style="margin-bottom: 20px;">
-                    <label for="name" style="display: block; margin-bottom: 5px;">Your Name</label>
-                    <input type="text" id="name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
-                    <input type="email" id="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <label for="business" style="display: block; margin-bottom: 5px;">Business Name</label>
-                    <input type="text" id="business" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-                </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
-            </form>
-        </div>
-    </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px;">EpiAccess</div>
-            <p>Making epinephrine accessible across New York</p>
-            <p style="margin-top: 30px;">© 2023 EpiAccess. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EpiAccess NY</h3>
+                    <p>Ensuring equitable access to life-saving epinephrine across New York State</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>NY State Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Elijah's Law (S. 4344B)</a></li>
+                        <li><a href="#">Good Samaritan Law</a></li>
+                        <li><a href="#">Public Health Law § 3000-c</a></li>
+                        <li><a href="#">DOH Epinephrine Guidance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Community Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Equity Program Application</a></li>
+                        <li><a href="#">Free Community Training</a></li>
+                        <li><a href="#">Public Space Initiative</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Bronx Headquarters, NY</li>
+                        <li><i class="fas fa-phone"></i> (212) 555-EPI1</li>
+                        <li><i class="fas fa-envelope"></i> community@epiaccessny.org</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 EpiAccess New York. All rights reserved. | Nonprofit organization 501(c)(3)</p>
+                <p style="margin-top: 10px;">Proudly serving all 62 counties of New York State</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // RSS Feed Configuration
-        const RSS_FEEDS = {
-            aafa: {
-                url: 'https://aafa.org/rss/allergy-and-asthma-news/',
-                containerId: 'aafa-news',
-                sourceUrl: 'https://aafa.org/asthma-allergy-news/',
-                name: 'AAFA'
-            },
-            nih: {
-                url: 'https://medlineplus.gov/feeds/topics/allergy.xml',
-                containerId: 'nih-news',
-                sourceUrl: 'https://medlineplus.gov/allergy.html',
-                name: 'NIH MedlinePlus'
-            }
-        };
-
-        // Function to fetch and display RSS feed using multiple services as fallback
-        async function fetchRSSFeed(feedKey) {
-            const feedConfig = RSS_FEEDS[feedKey];
-            const container = document.getElementById(feedConfig.containerId);
-            
-            // Try multiple RSS to JSON services
-            const services = [
-                {
-                    name: 'feed2json',
-                    url: `https://www.toptal.com/developers/feed2json/convert?url=${encodeURIComponent(feedConfig.url)}`
-                },
-                {
-                    name: 'rss2json',
-                    url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedConfig.url)}`
-                }
-            ];
-            
-            let success = false;
-            
-            for (const service of services) {
-                try {
-                    console.log(`Trying ${service.name} for ${feedConfig.name}...`);
-                    
-                    const response = await fetch(service.url);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    
-                    // Handle different response formats
-                    let items = [];
-                    if (service.name === 'feed2json') {
-                        items = data.items || [];
-                    } else if (service.name === 'rss2json' && data.status === 'ok') {
-                        items = data.items || [];
-                    }
-                    
-                    if (items.length > 0) {
-                        // Clear loading message
-                        container.innerHTML = '';
-                        
-                        // Display up to 5 items
-                        const itemsToShow = Math.min(5, items.length);
-                        for (let i = 0; i < itemsToShow; i++) {
-                            const item = items[i];
-                            const newsItem = document.createElement('div');
-                            newsItem.className = 'news-item';
-                            
-                            // Format date (handle different date fields)
-                            let formattedDate = '';
-                            const dateStr = item.date_published || item.pubDate || item.date;
-                            if (dateStr) {
-                                const date = new Date(dateStr);
-                                if (!isNaN(date.getTime())) {
-                                    formattedDate = date.toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric'
-                                    });
-                                }
-                            }
-                            
-                            // Get description (handle different field names)
-                            let description = item.content_html || item.description || item.summary || '';
-                            // Remove HTML tags
-                            description = description.replace(/<[^>]*>/g, '');
-                            // Decode HTML entities
-                            const textarea = document.createElement('textarea');
-                            textarea.innerHTML = description;
-                            description = textarea.value;
-                            // Truncate
-                            if (description.length > 150) {
-                                description = description.substring(0, 150).trim() + '...';
-                            }
-                            
-                            // Get link (handle different field names)
-                            const link = item.url || item.link || '#';
-                            
-                            newsItem.innerHTML = `
-                                <h4><a href="${link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h4>
-                                ${formattedDate ? `<div class="date">${formattedDate}</div>` : ''}
-                                ${description ? `<div class="description">${description}</div>` : ''}
-                            `;
-                            
-                            container.appendChild(newsItem);
-                        }
-                        
-                        // Add a subtle link to view more
-                        const moreLink = document.createElement('div');
-                        moreLink.style.cssText = 'text-align: center; margin-top: 20px;';
-                        moreLink.innerHTML = `<a href="${feedConfig.sourceUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.9rem;">View more at ${feedConfig.name} →</a>`;
-                        container.appendChild(moreLink);
-                        
-                        success = true;
-                        break; // Exit loop on success
-                    }
-                } catch (error) {
-                    console.error(`${service.name} failed for ${feedConfig.name}:`, error);
-                    continue; // Try next service
-                }
-            }
-            
-            // If all services failed, show fallback
-            if (!success) {
-                container.innerHTML = `
-                    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
-                        <h4 style="margin: 0 0 15px 0; color: var(--primary);">
-                            Latest ${feedConfig.name} News
-                        </h4>
-                        <p style="margin: 0 0 15px 0; color: #666;">
-                            Stay informed with the latest allergy research and guidelines.
-                        </p>
-                        <a href="${feedConfig.sourceUrl}" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           class="btn btn-primary"
-                           style="display: inline-block;">
-                            Visit ${feedConfig.name} →
-                        </a>
-                    </div>
-                    
-                    <!-- Sample content to show structure -->
-                    <div style="margin-top: 20px; opacity: 0.7;">
-                        <div class="news-item">
-                            <h4>Food Allergy Management Updates</h4>
-                            <div class="date">Recent</div>
-                            <div class="description">Visit ${feedConfig.name} for the latest guidelines on managing food allergies in commercial settings...</div>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        // Load RSS feeds when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load both RSS feeds
-            fetchRSSFeed('aafa');
-            fetchRSSFeed('nih');
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
-
-        // Smooth scrolling for navigation links
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Simple counter animation
+        const counter = document.querySelector('.counter-number');
+        if (counter) {
+            let count = 0;
+            const target = parseInt(counter.textContent);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            
+            const updateCounter = () => {
+                count += increment;
+                if (count < target) {
+                    counter.textContent = Math.floor(count);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            window.addEventListener('load', () => {
+                setTimeout(updateCounter, 500);
+            });
+        }
+        
+        // Community buttons
+        document.querySelectorAll('.btn-community').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
                     });
                 }
             });
