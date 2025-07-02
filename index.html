@@ -1626,6 +1626,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- (other scripts can go here) -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-EXAMPLE-KEY-HERE"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // ...your other JS above...
+
+    // LEAFLET MAP INITIALIZATION
+    if (document.getElementById('map')) {
+        var defaultCenter = [40.7128, -74.0060]; // NYC center
+        var map = L.map('map').setView(defaultCenter, 12);
+
+        // Add OpenStreetMap tiles:
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Try to geolocate the user:
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                var userLoc = [pos.coords.latitude, pos.coords.longitude];
+                map.setView(userLoc, 13);
+                L.marker(userLoc).addTo(map)
+                    .bindPopup('You are here!').openPopup();
+            });
+        }
+    }
+});
+</script>
 </body>
 </html>
    
