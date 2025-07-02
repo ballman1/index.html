@@ -1715,8 +1715,9 @@
             e.preventDefault();
             alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
         });
-        <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Hamburger menu
   const toggle = document.querySelector('.mobile-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (toggle && navLinks) {
@@ -1724,8 +1725,16 @@ document.addEventListener('DOMContentLoaded', function() {
       navLinks.classList.toggle('active');
     });
   }
+
+  // EpiComply form submission
+  const epicomplyForm = document.querySelector('.epicomply-form');
+  if (epicomplyForm) {
+    epicomplyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
+    });
+  }
 });
 </script>
-    </script>
 </body>
 </html>
