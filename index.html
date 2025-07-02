@@ -1254,7 +1254,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input type="email" id="email" class="form-control" placeholder="contact@business.com">
+                                <input type="email" id="epicomply-email" class="form-control" placeholder="contact@business.com">
                             </div>
                             
                             <div class="form-group">
@@ -1456,7 +1456,7 @@
                     
                     <div class="form-group">
                         <label for="email" style="color: white;">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="john@restaurant.com">
+                        <input type="email" id="enroll-email" class="form-control" placeholder="john@restaurant.com">
                     </div>
                     
                     <div class="form-group">
@@ -1542,199 +1542,87 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Initialize the map
-        const map = L.map('epimap').setView([40.7128, -74.0060], 12); // Default to NYC
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Sample locations (in a real app, this would come from a database)
-        const locations = [
-            {name: "Bronx Community Center", lat: 40.827, lng: -73.904, type: "community"},
-            {name: "Manhattan Eatery", lat: 40.748, lng: -73.985, type: "business"},
-            {name: "Brooklyn Emergency Point", lat: 40.678, lng: -73.944, type: "emergency"},
-            {name: "Queens Library", lat: 40.742, lng: -73.918, type: "community"},
-            {name: "Staten Island Pharmacy", lat: 40.579, lng: -74.151, type: "business"},
-            {name: "Central Park First Aid", lat: 40.781, lng: -73.966, type: "emergency"},
-            {name: "Harlem Community Center", lat: 40.809, lng: -73.946, type: "community"},
-            {name: "Wall Street Cafe", lat: 40.707, lng: -74.011, type: "business"},
-            {name: "NYU Medical Center", lat: 40.741, lng: -73.977, type: "emergency"}
-        ];
-
-        // Icon colors based on type
-        const iconColors = {
-            emergency: '#FF5252',
-            business: '#5C6BC0',
-            community: '#4CAF50'
-        };
-
-        // Add markers to the map
-        locations.forEach(loc => {
-            const marker = L.marker([loc.lat, loc.lng], {
-                icon: L.divIcon({
-                    className: 'custom-icon',
-                    html: `<div style="background: ${iconColors[loc.type]}; 
-                            width: 24px; 
-                            height: 24px; 
-                            border-radius: 50%; 
-                            border: 2px solid white;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-                           </div>`,
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12]
-                })
-            }).addTo(map);
-            
-            marker.bindPopup(`<b>${loc.name}</b><br>EpiAccess Certified Location`);
-        });
-
-        // Find user location
-        document.getElementById('findLocation').addEventListener('click', () => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    const { latitude, longitude } = position.coords;
-                    map.setView([latitude, longitude], 15);
-                    
-                    // Add user location marker
-                    L.marker([latitude, longitude], {
-                        icon: L.divIcon({
-                            className: 'custom-icon',
-                            html: `<div style="background: #1A237E; 
-                                    width: 32px; 
-                                    height: 32px; 
-                                    border-radius: 50%; 
-                                    border: 3px solid white;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    box-shadow: 0 3px 8px rgba(0,0,0,0.3);">
-                                   <i class="fas fa-user" style="color: white; font-size: 14px;"></i>
-                                   </div>`,
-                            iconSize: [32, 32],
-                            iconAnchor: [16, 16]
-                        })
-                    }).addTo(map).bindPopup("<b>Your Location</b>");
-                }, () => {
-                    alert("Unable to retrieve your location. Using default view.");
-                });
-            } else {
-                alert("Geolocation is not supported by your browser.");
-            }
-        });
-
-        // Reset map
-        document.getElementById('resetMap').addEventListener('click', () => {
-            map.setView([40.7128, -74.0060], 12);
-        });
-
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileToggle.addEventListener('click', () => {
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', function () {
             navLinks.classList.toggle('active');
         });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                item.classList.toggle('active');
-            });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
         });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
                 e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    navLinks.classList.remove('active');
-                }
-            });
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            }
         });
-        
-        // Simple counter animation
-        const counter = document.querySelector('.counter-number');
-        if (counter) {
-            let count = 0;
-            const target = parseInt(counter.textContent);
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            
-            const updateCounter = () => {
-                count += increment;
-                if (count < target) {
-                    counter.textContent = Math.floor(count);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.textContent = target;
-                }
-            };
-            
-            window.addEventListener('load', () => {
-                setTimeout(updateCounter, 500);
-            });
-        }
-        
-        // Community buttons
-        document.querySelectorAll('.btn-community').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+    });
+
+    // Simple counter animation
+    const counter = document.querySelector('.counter-number');
+    if (counter) {
+        let count = 0;
+        const target = parseInt(counter.textContent);
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        const updateCounter = () => {
+            count += increment;
+            if (count < target) {
+                counter.textContent = Math.floor(count);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        };
+        window.addEventListener('load', () => {
+            setTimeout(updateCounter, 500);
+        });
+    }
+
+    // Community buttons
+    document.querySelectorAll('.btn-community').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
-        
-        // EpiComply form submission
-        document.querySelector('.epicomply-form').addEventListener('submit', (e) => {
+    });
+
+    // EpiComply form submission
+    const epicomplyForm = document.querySelector('.epicomply-form');
+    if (epicomplyForm) {
+        epicomplyForm.addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
         });
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Hamburger menu
-  const toggle = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  }
-
-  // EpiComply form submission
-  const epicomplyForm = document.querySelector('.epicomply-form');
-  if (epicomplyForm) {
-    epicomplyForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
-    });
-  }
+    }
 });
 </script>
 </body>
 </html>
+   
