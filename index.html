@@ -1175,7 +1175,7 @@
         <!-- EpiMap Section -->
 <section id="epimap-section">
   <h2>Epimap</h2>
-  <iframe src="https://epimap.pages.dev/" width="100%" height="600" style="border:none;"></iframe>
+<div id="map" style="width: 100%; height: 600px;"></div>
 </section>
 
     <!-- EpiComply Section -->
@@ -1622,7 +1622,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-</script>
+</script> <!-- END of your custom JS block -->
+
+<!-- (other scripts can go here) -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-EXAMPLE-KEY-HERE"></script>
 </body>
 </html>
    
