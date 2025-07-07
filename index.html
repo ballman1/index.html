@@ -997,6 +997,57 @@
                 gap: 10px;
             }
         }
+        /* ── Allergy News section ───────────────────────────────────────── */
+.news-section{
+  background:#fff;
+  padding:80px 0;
+}
+.news-title{
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:50px;
+  color:var(--primary);
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+}
+#news-feed{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  width:90%;
+  max-width:1200px;
+  margin:0 auto;
+}
+.news-card{
+  display:grid;
+  grid-template-columns:112px 1fr;
+  gap:15px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  padding:20px;
+  align-items:start;
+  transition:transform .25s ease;
+}
+.news-card:hover{transform:translateY(-6px)}
+.news-card img{
+  width:112px;height:112px;object-fit:cover;border-radius:8px;
+}
+.news-card a{
+  font-weight:600;color:var(--primary);text-decoration:none;
+}
+.news-card a:hover{text-decoration:underline}
+.news-card time{
+  font-size:.85rem;color:#666;margin-top:4px;
+}
+#error{
+  color:#B00020;
+  font-weight:600;
+  margin-top:20px;
+  text-align:center;
+}
+/* ─────────────────────────────────────────────────────────────── */
+
     </style>
 </head>
 <body>
@@ -1403,6 +1454,13 @@
             </div>
         </div>
     </section>
+    <!-- ===== Latest Allergy News ===== -->
+<section class="news-section" id="news">
+  <h2 class="news-title">Latest Allergy News</h2>
+  <div id="news-feed"></div>
+  <div id="error"></div>
+</section>
+
 
     <!-- FAQ Section -->
     <section class="section" id="faq">
@@ -1649,6 +1707,57 @@ function initMap() {
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcYxF0mxiJIO7r2wPHwUBEcd9fSC_-HJ0&callback=initMap" async defer></script>
+    <!-- RSS merge + thumbnails -->
+<script defer>
+var RSS_KEY='YOUR_RSS2JSON_KEY';                          // <— put your key
+var FEEDS=[
+ 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-allergies/rss.xml',
+ 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml',
+ 'https://www.sciencedaily.com/rss/health_medicine/allergy.xml',
+ 'https://news.google.com/rss/search?q=allergy+OR+food+allergy&hl=en-US&gl=US&ceid=US:en'
+];
+var PLACE='https://placehold.co/112x112?text=EPI',MAX=18;
+function rss(u){return 'https://api.rss2json.com/v1/api.json?api_key='+RSS_KEY+'&count=20&images=true&rss_url='+encodeURIComponent(u);}
+function microlink(u){return 'https://api.microlink.io/?meta=true&audio=false&video=false&url='+encodeURIComponent(u);}
+function fix(u){if(!u)return'';if(u.slice(0,2)==='//')return'https:'+u;if(u.slice(0,7)==='http://')return'https://'+u.substr(7);return u;}
+function imgFrom(it){
+  if(it.thumbnail) return fix(it.thumbnail);
+  if(it.enclosure&&it.enclosure.link) return fix(it.enclosure.link);
+  if(it.enclosure&&it.enclosure.url)  return fix(it.enclosure.url);
+  if(it['media:thumbnail']&&it['media:thumbnail'].url) return fix(it['media:thumbnail'].url);
+  if(it['media:content']&&it['media:content'].url)     return fix(it['media:content'].url);
+  var h=(it.content||it.description||''),m=h.match(/<img[^>]+(?:src|data-src)=['"]([^'"]+)['"]/i);
+  return m?fix(m[1]):'';
+}
+function unwrap(u){return(u.indexOf('news.google.com')>-1&&u.indexOf('url=')>-1)?decodeURIComponent(u.split('url=')[1].split('&')[0]):u;}
+
+(function(){
+  Promise.allSettled(FEEDS.map(function(f){return fetch(rss(f)).then(function(r){return r.json();});}))
+  .then(function(arr){
+    var items=[];arr.forEach(function(r){if(r.status==='fulfilled'&&r.value&&r.value.status==='ok')items=items.concat(r.value.items||[]);});
+    if(!items.length){document.getElementById('error').textContent='News feed unavailable.';return;}
+    items.sort(function(a,b){return new Date(b.pubDate)-new Date(a.pubDate);});
+    render(items.slice(0,MAX));
+  }).catch(function(){document.getElementById('error').textContent='News feed error.';});
+})();
+
+function render(list){
+  var box=document.getElementById('news-feed');
+  list.forEach(function(it){
+    var img=imgFrom(it),card=document.createElement('div');
+    card.className='news-card';
+    card.innerHTML='<img src="'+(img||PLACE)+'" alt=""><div><a href="'+it.link+'" target="_blank" rel="noopener">'+it.title+'</a><time datetime="'+it.pubDate+'">'+new Date(it.pubDate).toLocaleDateString()+'</time></div>';
+    box.appendChild(card);
+    if(!img){(function(n,u){
+      fetch(microlink(u)).then(function(r){return r.json();}).then(function(d){
+        if(d.status==='success'&&d.data&&d.data.image&&d.data.image.url)
+          n.querySelector('img').src=fix(d.data.image.url);
+      })["catch"](function(){});
+    })(card,unwrap(it.link));}
+  });
+}
+</script>
+
 </body>
 </html>
     
