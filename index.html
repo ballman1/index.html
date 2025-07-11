@@ -1634,27 +1634,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Simple counter animation
-    const counter = document.querySelector('.counter-number');
-    if (counter) {
-        let count = 0;
-        const target = parseInt(counter.textContent);
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        const updateCounter = () => {
-            count += increment;
-            if (count < target) {
-                counter.textContent = Math.floor(count);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
-            }
-        };
-        window.addEventListener('load', () => {
-            setTimeout(updateCounter, 500);
-        });
-    }
-
     // Community buttons
     document.querySelectorAll('.btn-community').forEach(btn => {
         btn.addEventListener('click', function (e) {
