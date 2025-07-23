@@ -1088,8 +1088,9 @@
                 <h1>Safety Shouldn't Be a Privilege</h1>
                 <p>New York State law ensures life-saving epinephrine access for all</p>
                 
-                    <div class="counter-number">3,600,000</div>
-                    <div class="counter-label">People in the US who rely on Epinephrine Auto Injectors</div>
+                <div class="counter">
+                    <div class="counter-number">1 in 20</div>
+                    <div class="counter-label">people in the US rely on Epinephrine for Anaphylaxis</div>
                 </div>
                 
                 <div class="hero-buttons">
@@ -1356,44 +1357,9 @@
         <div class="container">
             <div class="equity-content">
                 <h2>Community Equity Program</h2>
-                <div class="law-badge">Funded by NY Department of Health</div>
-                <p>We believe life-saving medication should never be out of reach due to economic circumstances. Our equity program ensures:</p>
+                <p style="font-size: 1.3rem; margin: 30px auto; max-width: 700px;">We believe life-saving medication should never be out of reach due to economic circumstances. Contact us to see if your business qualifies for free or reduced cost Epinephrine Auto Injectors.</p>
                 
-                <div class="benefits-container" style="margin-top: 40px;">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-tags"></i>
-                        </div>
-                        <h3 class="benefit-title">Sliding Scale Fees</h3>
-                        <p>Subsidized enrollment for businesses in underserved communities. Pay what you can afford.</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-box-open"></i>
-                        </div>
-                        <h3 class="benefit-title">Free EpiPens</h3>
-                        <p>Donated auto-injectors for community centers, food pantries, and public housing facilities.</p>
-                    </div>
-                </div>
-                
-                <h3 style="margin: 50px 0 20px;">Our Community Partners</h3>
-                <div class="community-partners">
-                    <div class="partner-logo">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <div class="partner-logo">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="partner-logo">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="partner-logo">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                </div>
-                
-                <a href="#enroll" class="btn btn-community">Apply for Equity Program</a>
+                <a href="#enroll" class="btn btn-community" style="margin-top: 40px;">Contact Us</a>
             </div>
         </div>
     </section>
@@ -1533,20 +1499,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label style="color: white;">Community Type</label>
-                        <div style="display: flex; gap: 10px; margin-top: 8px;">
-                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Urban</button>
-                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Suburban</button>
-                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Rural</button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label style="color: white;">Interested in:</label>
-                        <div style="display: flex; gap: 10px; margin-top: 8px;">
-                            <button type="button" class="btn" style="flex: 1; background: rgba(255,255,255,0.2); color: white;">Standard Program</button>
-                            <button type="button" class="btn" style="flex: 1; background: var(--community); color: white;">Equity Program</button>
-                        </div>
+                        <label for="description" style="color: white;">Description of Your Business</label>
+                        <textarea id="description" class="form-control" rows="4" placeholder="Please describe your business, including type of services, typical customer base, and any other relevant information"></textarea>
                     </div>
                     
                     <button type="submit" class="btn btn-community" style="width: 100%; padding: 16px; font-size: 1.1rem;">Submit Enrollment</button>
@@ -1922,4 +1876,3 @@ window.submitFeedback = function (locationId, type) {
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcYxF0mxiJIO7r2wPHwUBEcd9fSC_-HJ0&callback=initMap" async defer></script>
 </body>
 </html>
-    
