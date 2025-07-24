@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #1A237E;
@@ -1560,6 +1562,11 @@
         </div>
     </footer>
 <script>
+// Initialize EmailJS with your public key
+(function() {
+    emailjs.init("4leFj0m4jT7WPX7Nw");
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobileToggle');
@@ -1607,12 +1614,84 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+    
     // EpiComply form submission
     const epicomplyForm = document.querySelector('.epicomply-form');
     if (epicomplyForm) {
         epicomplyForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
+            
+            // Get form values
+            const formData = {
+                businessName: document.getElementById('businessName').value,
+                businessType: document.getElementById('businessType').value,
+                email: document.getElementById('epicomply-email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                formType: 'EpiComply Registration'
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_waagqdp', 'template_fd2hku9', {
+                to_email: 'epiaccess.org@gmail.com',
+                from_name: formData.businessName,
+                from_email: formData.email,
+                subject: 'New EpiComply Registration',
+                message: `
+                    Form Type: ${formData.formType}
+                    Business Name: ${formData.businessName}
+                    Business Type: ${formData.businessType}
+                    Email: ${formData.email}
+                    Phone: ${formData.phone}
+                    Address: ${formData.address}
+                `
+            }).then(function() {
+                alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
+                epicomplyForm.reset();
+            }, function(error) {
+                alert('There was an error submitting your registration. Please try again or contact us directly.');
+                console.error('EmailJS error:', error);
+            });
+        });
+    }
+    
+    // Enrollment form submission
+    const enrollmentForm = document.querySelector('#enroll form');
+    if (enrollmentForm) {
+        enrollmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('enroll-email').value,
+                businessName: document.getElementById('business').value,
+                zip: document.getElementById('zip').value,
+                description: document.getElementById('description').value,
+                formType: 'Business Enrollment'
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_waagqdp', 'template_fd2hku9', {
+                to_email: 'epiaccess.org@gmail.com',
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: 'New Business Enrollment',
+                message: `
+                    Form Type: ${formData.formType}
+                    Name: ${formData.name}
+                    Email: ${formData.email}
+                    Business Name: ${formData.businessName}
+                    ZIP Code: ${formData.zip}
+                    Business Description: ${formData.description}
+                `
+            }).then(function() {
+                alert('Thank you for enrolling! We will contact you shortly with more information.');
+                enrollmentForm.reset();
+            }, function(error) {
+                alert('There was an error submitting your enrollment. Please try again or contact us directly.');
+                console.error('EmailJS error:', error);
+            });
         });
     }
 });
