@@ -1070,8 +1070,8 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#epimap">EpiMap</a></li>
-                <li><a href="#epicomply">EpiComply</a></li>
+                <li><a href="#epimap">EpiMap™</a></li>
+                <li><a href="#epicomply">EpiComply™</a></li>
                 <li><a href="#mission">Mission</a></li>
                 <li><a href="#laws">Laws</a></li>
                 <li><a href="#benefits">Why</a></li>
@@ -1233,18 +1233,21 @@
     </section>
         <!-- EpiMap Section -->
 <section class="section epimap-section" id="epimap">
-  <h2>Epimap</h2>
+  <h2 class="section-title">EpiMap™</h2>
+  <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    Zoom in on the EpiMap™ below to find the locations in your area that carry Epinephrine Auto Injectors on premises
+  </p>
 <div id="map" style="width: 100%; height: 600px;"></div>
 </section>
 
     <!-- EpiComply Section -->
     <section class="section epicomply-section" id="epicomply">
         <div class="container">
-            <h2 class="section-title" style="color: white;">EpiComply: Compliance for Businesses</h2>
+            <h2 class="section-title" style="color: white;">EpiComply™: Compliance for Businesses</h2>
             
             <div class="epicomply-container">
                 <div class="epicomply-content">
-                    <p style="font-size: 1.2rem; margin-bottom: 30px;">New York businesses: Use our EpiComply web app to ensure you meet state requirements and become EpiAccess certified.</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">New York businesses: Use our EpiComply™ web app to ensure you meet state requirements and become EpiAccess certified.</p>
                     
                     <div class="compliance-badge">NY State Approved</div>
                     
@@ -1281,12 +1284,12 @@
                     </div>
                     
                     <div class="badge-container">
-                        <img src="epiaccess-certified-badge.png" alt="EpiAccess Certified - Epinephrine Auto-Injector" style="width: 250px; height: auto;">
+                        <img src="YOUR-NEW-FILENAME.png" alt="EpiAccess Certified - Epinephrine Auto-Injector" style="width: 250px; height: auto;">
                     </div>
                 </div>
                 
                 <div class="epicomply-form-container">
-                    <h3 style="margin-bottom: 30px; text-align: center;">Access EpiComply</h3>
+                    <h3 style="margin-bottom: 30px; text-align: center;">Access EpiComply™</h3>
                     
                     <form class="epicomply-form">
                         <div class="form-row">
@@ -1340,7 +1343,7 @@
                         </div>
                         
                         <button type="submit" class="btn btn-comply" style="width: 100%; padding: 16px; margin-top: 20px;">
-                            Create EpiComply Account
+                            Create EpiComply™ Account
                         </button>
                         
                         <p style="text-align: center; margin-top: 20px;">
@@ -1644,7 +1647,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     Address: ${formData.address}
                 `
             }).then(function() {
-                alert('Thank you for registering for EpiComply! You will receive an email with login instructions shortly.');
+                alert('Thank you for registering for EpiComply™! You will receive an email with login instructions shortly.');
                 epicomplyForm.reset();
             }, function(error) {
                 alert('There was an error submitting your registration. Please try again or contact us directly.');
