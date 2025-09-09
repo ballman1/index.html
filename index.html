@@ -956,8 +956,8 @@
             }
             
             .nav-links {
-                position: fixed;
-                top: 80px;
+                position: absolute;
+                top: 100%;
                 left: 0;
                 width: 100%;
                 background: white;
@@ -965,9 +965,12 @@
                 align-items: center;
                 padding: 20px 0;
                 box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-                transform: translateY(-150%);
-                transition: transform 0.4s ease;
+                display: none;
                 z-index: 999;
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .nav-links.active {
@@ -987,8 +990,8 @@
             }
             
             .hero {
-                padding: 120px 0 40px;
-                margin-top: 0;
+                padding: 90px 0 40px;
+                margin-top: 60;
             }
             
             .hero h1 {
