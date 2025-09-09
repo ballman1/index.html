@@ -212,7 +212,7 @@
             position: relative;
         }
         .hero {
-    margin-top: 60px; /* Adjust this value to match your header height */
+    margin-top: 80px; /* Adjust this value to match your header height */
 }
 
         .hero-content {
@@ -914,7 +914,7 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+                @media (max-width: 992px) {
             .mission-content,
             .training-container,
             .benefits-container,
@@ -967,6 +967,7 @@
                 box-shadow: 0 10px 10px rgba(0,0,0,0.1);
                 transform: translateY(-150%);
                 transition: transform 0.4s ease;
+                z-index: 999;
             }
             
             .nav-links.active {
@@ -986,18 +987,40 @@
             }
             
             .hero {
-                padding: 75px 0 40px;
+                padding: 120px 0 40px;
+                margin-top: 0;
             }
             
             .hero h1 {
                 font-size: 2.2rem;
             }
             
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
             .form-row {
                 flex-direction: column;
                 gap: 10px;
             }
+            
+            header {
+                background-color: white;
+                border-bottom: 1px solid #e0e0e0;
+            }
         }
+
         /* ── Allergy News section ───────────────────────────────────────── */
 .news-section{
   background:#fff;
