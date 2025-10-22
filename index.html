@@ -264,6 +264,35 @@
         }
         .board-link:hover { text-decoration: underline; }
     </style>
+    <style>
+  /* Compact, text-only news cards */
+  .news-card{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:12px;
+    box-shadow: var(--shadow);
+    background:#fff;
+  }
+  .news-card img{ display:none !important; } /* ensure no thumbnails */
+  .news-card a{
+    flex:1;
+    font-weight:600;
+    color:var(--primary);
+    text-decoration:none;
+  }
+  .news-card a:hover{ text-decoration:underline; }
+  .news-card time{
+    flex:0 0 auto;
+    font-size:.85rem;
+    color:#666;
+    margin-left:12px;
+    white-space:nowrap;
+  }
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -1008,13 +1037,12 @@ function render(list){
     var card = document.createElement('div');
     card.className = 'news-card';
     card.innerHTML =
-      '<div>' +
-        '<a href="'+it.link+'" target="_blank" rel="noopener">'+it.title+'</a>' +
-        '<time datetime="'+it.pubDate+'">'+new Date(it.pubDate).toLocaleDateString()+'</time>' +
-      '</div>';
+      '<a href="'+it.link+'" target="_blank" rel="noopener">'+it.title+'</a>' +
+      '<time datetime="'+it.pubDate+'">'+new Date(it.pubDate).toLocaleDateString()+'</time>';
     box.appendChild(card);
   });
 }
+
 
 </script>
 
